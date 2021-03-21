@@ -1,16 +1,29 @@
 <template>
   <div id="app">
-    <FirsScreen msg="Welcome to Your Vue.js App"/>
+    <FirsScreen @toMainScreen='toMainScreen' v-show="screen == 0" />
+    <MainScreen v-show="screen == 1" />
   </div>
 </template>
 
 <script>
 import FirsScreen from './components/FirsScreen.vue'
+import MainScreen from './components/MainScreen.vue'
 
 export default {
   name: 'App',
   components: {
-    FirsScreen
+    FirsScreen,
+    MainScreen
+  },
+  data() {
+    return {
+      screen: 0
+    }
+  },
+  methods: {
+    toMainScreen() {
+      this.screen++
+    }
   }
 }
 </script>
