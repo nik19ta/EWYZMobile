@@ -7,7 +7,7 @@
             <qrcode-stream @decode="onDecode"></qrcode-stream>
         </div>
         <div class="bottom_bar" >
-
+            <p>Наведите на QR-Code</p>
         </div>
 
 
@@ -59,18 +59,29 @@ export default {
             }
         }
         .content{
-            height: calc(100vh - 50px - 110px); 
+            height: calc(100vh - 50px - 80px); 
             width: 100%;
 
-            background: red;
+            background: #fff;
         }
         .bottom_bar {
             width: 100%;
-            height: 140px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 100px;
             background: #212121;
             border-top-right-radius: 18px;
             border-top-left-radius: 18px;
-            margin-top: -30px;
+            z-index: 999;
+
+
+            p {
+                font-size: 24px;
+                color: #fff;
+                width: 100%;
+                text-align: center;
+            }
         }
 
 

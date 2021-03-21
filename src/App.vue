@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <FirsScreen @toMainScreen='toMainScreen' v-show="screen == 0" />
-    <MainScreen v-show="screen == 1" />
+    <FirsScreen @toMainScreen='toMainScreen' v-if="screen == 0" />
+    <MainScreen v-if="screen == 1" />
   </div>
 </template>
 
