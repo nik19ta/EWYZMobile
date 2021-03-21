@@ -24,10 +24,15 @@
       <div class="btns">
         <div class="btns_group">
           <button @click="backStap" class="btn btn_cancel">
-            <img class="img_in_btn" :src="step > 1 ? require('../assets/back.png') : require('../assets/cancel.png')" alt="">
+            <img 
+              class="img_in_btn" 
+              :src="step > 1 ? require('../assets/back.png') : require('../assets/cancel.png')" 
+              alt="back screen" >
             </button>
           <button @click="nextStap" class="btn btn_to">
-            <img class="img_in_btn" src="../assets/to.png" alt="">
+            <img class="img_in_btn" 
+            :src="step <= 2 ? require('../assets/to.png') : require('../assets/backToMain.png')" 
+            alt="to next screen">
           </button>
         </div>
       </div>
@@ -47,11 +52,15 @@
       nextStap() {
         if (this.step == 1) this.step++
         else if (this.step == 2) this.step++
+        else if (this.step == 3) this.toMainScreen()
       },
       backStap() {
         if (this.step == 1) return null
         else if (this.step == 2) this.step = 1
         else if (this.step == 3) this.step--
+      },
+      toMainScreen() {
+        this.$emit('toMainScreen')
       }
     }
   }
@@ -167,6 +176,7 @@
           margin-left: 5px;
         }
 
+
         .btns_group {
           display: flex;
           justify-content: center;
@@ -185,7 +195,7 @@
         }
 
         .img_in_btn {
-          width: 100%;
+          width: 60%;
         }
       }
     }
