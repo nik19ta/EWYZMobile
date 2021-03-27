@@ -3,6 +3,7 @@
     <FirsScreen @toMainScreen='toMainScreen' v-if="screen == 0" />
     <MainScreen v-if="screen == 1" />
     <MenuScreen v-if="screen == 2" />
+    <ProductScreen v-if="screen == 3" />
   </div>
 </template>
 
@@ -10,17 +11,19 @@
 import FirsScreen from './components/FirsScreen.vue'
 import MainScreen from './components/MainScreen.vue'
 import MenuScreen from './components/Menu'
+import ProductScreen from './components/Product'
 
 export default {
   name: 'App',
   components: {
     FirsScreen,
     MainScreen,
-    MenuScreen
+    MenuScreen,
+    ProductScreen
   },
   data() {
     return {
-      screen: 2
+      screen: 0
     }
   },
   methods: {
