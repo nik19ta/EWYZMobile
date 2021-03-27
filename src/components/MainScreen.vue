@@ -32,6 +32,7 @@ export default {
     methods: {
         onDecode (decodedString) {
             console.log(decodedString);
+            this.$emit('toMenu', decodedString)
         }
     }
 }

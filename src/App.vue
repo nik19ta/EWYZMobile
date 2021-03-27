@@ -2,22 +2,25 @@
   <div id="app">
     <FirsScreen @toMainScreen='toMainScreen' v-if="screen == 0" />
     <MainScreen v-if="screen == 1" />
+    <MenuScreen v-if="screen == 2" />
   </div>
 </template>
 
 <script>
 import FirsScreen from './components/FirsScreen.vue'
 import MainScreen from './components/MainScreen.vue'
+import MenuScreen from './components/Menu'
 
 export default {
   name: 'App',
   components: {
     FirsScreen,
-    MainScreen
+    MainScreen,
+    MenuScreen
   },
   data() {
     return {
-      screen: 0
+      screen: 2
     }
   },
   methods: {
