@@ -5,6 +5,9 @@
         </div>
         <div class="MenuContent">
             
+            <div class="photo" :style="`background-image: url(${productData[1].img})`" >
+                <!-- {{productData}} -->
+            </div>
 
             <div class="description" >
                 <div class="steps">
@@ -13,15 +16,15 @@
                     <span :style="step > 2 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps3"></span>
                 </div>
                 <div class="titel_product">
-                    <p class="name">Латте</p>
-                    <p class="price">500</p>
+                    <p class="name">{{productData[1].name}}</p>
+                    <p class="price">{{productData[1].price}}</p>
                 </div>
                 <div class="time_block">
                     <p class="time">5-10min</p>
                 </div>
                 <div class="structure">
                     <p>Состав:</p>
-                    <p class="structure_text" >Блабла бабалабла блабалбала блабалабл аба лбалаблаб ла</p>
+                    <p class="structure_text" > {{productData[1].structure}} </p>
                 </div>
                 <div class="container_btn" >
                     <button @click="to3D" >Смотреть в 3D</button>
@@ -37,8 +40,11 @@
         data() {
             return {
                 data: [],
-                step: 2
+                step: 0
             }
+        },
+        props: {
+            productData: {}
         },
         methods: {
             backToMenu() {
@@ -103,6 +109,12 @@
 
             position: relative;
             
+            .photo {
+                width: 100%;
+                height: calc(100vh - 50px - 230px + 20px);
+                background-size: cover;
+            }
+
             .steps{
                 width: 100%;
                 height: 20px;

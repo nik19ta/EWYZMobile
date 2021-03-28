@@ -27,7 +27,9 @@ export default {
     },
     methods: {
         onDecode (decodedString) {
-            this.$emit('toMenu', decodedString)
+            if (decodedString.indexOf("/menu=") !== -1) {
+                this.$emit('toMenu', decodedString.split("/menu=")[1])
+            }
         }
     }
 }

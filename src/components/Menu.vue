@@ -5,76 +5,23 @@
             <img class="search" src="../assets/search.svg" alt="">
         </div>
         <div class="MenuContent">
-            <div class="category">
-                <p class="title">Супы</p>
-                <div class="items_scroll">
-                    <div class="items" :style="`width: ${(210 + 10) * 3}px`">
-                        <div @click='toProduct("1")' class="item">
+
+            <div class="category" v-for="item in data" :key="item.name">
+                <p class="title">{{item.name}}</p>
+                <div class="items_scroll" >
+                    <div class="items" 
+                        :style="`width: ${(210 + 10) * item.items.length}px`" >
+
+                        <div 
+                            v-for="itm in item.items"
+                            :key="itm.name"
+                            @click='toProduct([item.name, itm])'
+                            :style="`background-image: url(${itm.img});`"
+                            class="item" >
+
                             <div class="description">
-                                <div class="name">Пикассо</div>
-                                <div class="price">500</div>
-                            </div>
-                        </div>
-                        <div @click='toProduct("1")' class="item">
-                            <div class="description">
-                                <div class="name">Пикассо</div>
-                                <div class="price">500</div>
-                            </div>
-                        </div>
-                        <div @click='toProduct("1")' class="item">
-                            <div class="description">
-                                <div class="name">Пикассо</div>
-                                <div class="price">500</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="category">
-                <p class="title">Горячие</p>
-                <div class="items_scroll">
-                    <div class="items" :style="`width: ${(210 + 10) * 3}px`">
-                        <div @click='toProduct("1")' class="item">
-                            <div class="description">
-                                <div class="name">Пикассо</div>
-                                <div class="price">500</div>
-                            </div>
-                        </div>
-                        <div @click='toProduct("1")' class="item">
-                            <div class="description">
-                                <div class="name">Пикассо</div>
-                                <div class="price">500</div>
-                            </div>
-                        </div>
-                        <div @click='toProduct("1")' class="item">
-                            <div class="description">
-                                <div class="name">Пикассо</div>
-                                <div class="price">500</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="category">
-                <p class="title">Напитки</p>
-                <div class="items_scroll">
-                    <div class="items" :style="`width: ${(210 + 10) * 3}px`">
-                        <div @click='toProduct("1")' class="item">
-                            <div class="description">
-                                <div class="name">Пикассо</div>
-                                <div class="price">500</div>
-                            </div>
-                        </div>
-                        <div @click='toProduct("1")' class="item">
-                            <div class="description">
-                                <div class="name">Пикассо</div>
-                                <div class="price">500</div>
-                            </div>
-                        </div>
-                        <div @click='toProduct("1")' class="item">
-                            <div class="description">
-                                <div class="name">Пикассо</div>
-                                <div class="price">500</div>
+                                <div class="name">{{itm.name}} </div>
+                                <div class="price">{{itm.price}}</div>
                             </div>
                         </div>
                     </div>
@@ -91,6 +38,18 @@
             return {
                 data: [],
             }
+        },
+        props: {
+            dataMenu: {}
+        },
+        mounted() {
+            fetch(`http://localhost:3000/api/get_menu?${this.dataMenu}`)
+                .then(response => response.text())
+                .then((response) => {
+                    this.data = JSON.parse(response)
+
+                    console.log(this.data);
+                })
         },
         methods: {
             showMenu() {
@@ -171,6 +130,8 @@
                             flex-direction: column;
                             justify-content: flex-end;
                             align-items: center;
+
+                            background-size: cover;
 
                             .description {
                                 width: 100%;

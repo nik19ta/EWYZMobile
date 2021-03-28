@@ -43,7 +43,7 @@ export default {
   },
   data() {
     return {
-      screen: 4,
+      screen: 0,
       dataMenu: '',
       productData: {}
     }
