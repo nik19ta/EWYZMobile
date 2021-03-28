@@ -9,8 +9,6 @@
         <div class="bottom_bar" >
             <p>Наведите на QR-Code</p>
         </div>
-
-
     </div>
 </template>
 
@@ -25,13 +23,10 @@ export default {
         }
     },
     components: {
-        QrcodeStream,
-        // QrcodeDropZone,
-        // QrcodeCapture
+        QrcodeStream
     },
     methods: {
         onDecode (decodedString) {
-            console.log(decodedString);
             this.$emit('toMenu', decodedString)
         }
     }

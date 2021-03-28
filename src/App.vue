@@ -1,9 +1,27 @@
 <template>
   <div id="app">
-    <FirsScreen @toMainScreen='toMainScreen' v-if="screen == 0" />
-    <MainScreen v-if="screen == 1" />
-    <MenuScreen v-if="screen == 2" />
-    <ProductScreen v-if="screen == 3" />
+    <FirsScreen
+        v-if="screen == 0"
+        @toMainScreen='toMainScreen' />
+
+    <MainScreen
+        v-if="screen == 1"
+        @toMenu='toMenu' />
+
+    <MenuScreen 
+        v-if="screen == 2"
+        @toProduct='toProduct'
+        :dataMenu='dataMenu' />
+
+    <ProductScreen
+        v-if="screen == 3"
+        @backToMenu='backToMenu'
+        @to3D='to3D'
+        :productData='productData' />
+
+    <ProductScreen3D
+        v-if="screen == 4"
+        @back='back' />
   </div>
 </template>
 
@@ -12,6 +30,7 @@ import FirsScreen from './components/FirsScreen.vue'
 import MainScreen from './components/MainScreen.vue'
 import MenuScreen from './components/Menu'
 import ProductScreen from './components/Product'
+import ProductScreen3D from './components/Product3D'
 
 export default {
   name: 'App',
@@ -19,15 +38,35 @@ export default {
     FirsScreen,
     MainScreen,
     MenuScreen,
-    ProductScreen
+    ProductScreen,
+    ProductScreen3D
   },
   data() {
     return {
-      screen: 0
+      screen: 4,
+      dataMenu: '',
+      productData: {}
     }
   },
   methods: {
     toMainScreen() {
+      this.screen++
+    },
+    toMenu(data) {
+      this.screen++
+      this.dataMenu = data;
+    },
+    toProduct(data) {
+      this.screen++
+      this.productData = data;
+    },
+    backToMenu() {
+      this.screen--
+    },
+    back() {
+      this.screen--
+    },
+    to3D() {
       this.screen++
     }
   }

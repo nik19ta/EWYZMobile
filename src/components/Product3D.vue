@@ -1,17 +1,10 @@
 <template>
     <div class="ProductScrin">
         <div class="container_logo">
-            <p @click="backToMenu" class="logo_text">Назад</p>
+            <p @click='back' class="logo_text">Назад</p>
         </div>
         <div class="MenuContent">
-            
-
             <div class="description" >
-                <div class="steps">
-                    <span :style="step > 0 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps1"></span>
-                    <span :style="step > 1 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps2"></span>
-                    <span :style="step > 2 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps3"></span>
-                </div>
                 <div class="titel_product">
                     <p class="name">Латте</p>
                     <p class="price">500</p>
@@ -24,7 +17,7 @@
                     <p class="structure_text" >Блабла бабалабла блабалбала блабалабл аба лбалаблаб ла</p>
                 </div>
                 <div class="container_btn" >
-                    <button @click="to3D" >Смотреть в 3D</button>
+                    <button @click='back' >Назад</button>
                 </div>
             </div>
         </div>
@@ -41,11 +34,8 @@
             }
         },
         methods: {
-            backToMenu() {
-                this.$emit('backToMenu')
-            },
-            to3D() {
-                this.$emit('to3D')
+            back() {
+                this.$emit('back')
             }
         }
     }
@@ -102,30 +92,6 @@
             background: #f0f0f0;
 
             position: relative;
-            
-            .steps{
-                width: 100%;
-                height: 20px;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                // margin-top: -60px;
-                z-index: 2;
-
-                .step{
-                width: 8px;
-                height: 8px;
-
-                display: block;
-                border-radius: 10px;
-                background: #fff;
-                opacity: 0.5;
-                margin-left: 14px;
-                margin-right: 14px;
-                }
-            }
 
             .description {
                 padding-top: 10px;

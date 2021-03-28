@@ -9,19 +9,19 @@
                 <p class="title">Супы</p>
                 <div class="items_scroll">
                     <div class="items" :style="`width: ${(210 + 10) * 3}px`">
-                        <div class="item">
+                        <div @click='toProduct("1")' class="item">
                             <div class="description">
                                 <div class="name">Пикассо</div>
                                 <div class="price">500</div>
                             </div>
                         </div>
-                        <div class="item">
+                        <div @click='toProduct("1")' class="item">
                             <div class="description">
                                 <div class="name">Пикассо</div>
                                 <div class="price">500</div>
                             </div>
                         </div>
-                        <div class="item">
+                        <div @click='toProduct("1")' class="item">
                             <div class="description">
                                 <div class="name">Пикассо</div>
                                 <div class="price">500</div>
@@ -34,19 +34,19 @@
                 <p class="title">Горячие</p>
                 <div class="items_scroll">
                     <div class="items" :style="`width: ${(210 + 10) * 3}px`">
-                        <div class="item">
+                        <div @click='toProduct("1")' class="item">
                             <div class="description">
                                 <div class="name">Пикассо</div>
                                 <div class="price">500</div>
                             </div>
                         </div>
-                        <div class="item">
+                        <div @click='toProduct("1")' class="item">
                             <div class="description">
                                 <div class="name">Пикассо</div>
                                 <div class="price">500</div>
                             </div>
                         </div>
-                        <div class="item">
+                        <div @click='toProduct("1")' class="item">
                             <div class="description">
                                 <div class="name">Пикассо</div>
                                 <div class="price">500</div>
@@ -59,19 +59,19 @@
                 <p class="title">Напитки</p>
                 <div class="items_scroll">
                     <div class="items" :style="`width: ${(210 + 10) * 3}px`">
-                        <div class="item">
+                        <div @click='toProduct("1")' class="item">
                             <div class="description">
                                 <div class="name">Пикассо</div>
                                 <div class="price">500</div>
                             </div>
                         </div>
-                        <div class="item">
+                        <div @click='toProduct("1")' class="item">
                             <div class="description">
                                 <div class="name">Пикассо</div>
                                 <div class="price">500</div>
                             </div>
                         </div>
-                        <div class="item">
+                        <div @click='toProduct("1")' class="item">
                             <div class="description">
                                 <div class="name">Пикассо</div>
                                 <div class="price">500</div>
@@ -95,6 +95,9 @@
         methods: {
             showMenu() {
                 console.log(1);
+            },
+            toProduct(data) {
+                this.$emit('toProduct', data)
             }
         }
     }
