@@ -6,16 +6,10 @@
       <img class="logo" src="../assets/logo.svg" alt="">
     </div>
     <div class="container_mobile_photo">
-      <img v-show="step == 1" class="mobile_photo" src="../assets/screen_1.png" alt="">
-      <img v-show="step == 2" class="mobile_photo" src="../assets/screen_2.png" alt="">
-      <img v-show="step == 3" class="mobile_photo" src="../assets/screen_3.png" alt="">
+      <img class="mobile_photo" src="../assets/screen_1.png" alt="">
     </div>
     <div class="container_title">
-      <h1>
-        {{step == 1 ? "Сканируй QR-Code" : ""}}
-        {{step == 2 ? "Просматривай меню" : ""}}
-        {{step == 3  ? "Смотри в 3D" : ""}}
-      </h1>
+      <h1>Сканируй QR-Code</h1>
 
       <div class="steps">
         <span :style="step > 0 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps1"></span>
@@ -46,16 +40,10 @@
       <img class="logo" src="../assets/logo.svg" alt="">
     </div>
     <div class="container_mobile_photo">
-      <img v-show="step == 1" class="mobile_photo" src="../assets/screen_1.png" alt="">
-      <img v-show="step == 2" class="mobile_photo" src="../assets/screen_2.png" alt="">
-      <img v-show="step == 3" class="mobile_photo" src="../assets/screen_3.png" alt="">
+      <img  class="mobile_photo" src="../assets/screen_2.png" alt="">
     </div>
     <div class="container_title">
-      <h1>
-        {{step == 1 ? "Сканируй QR-Code" : ""}}
-        {{step == 2 ? "Просматривай меню" : ""}}
-        {{step == 3  ? "Смотри в 3D" : ""}}
-      </h1>
+      <h1>Просматривай меню</h1>
 
       <div class="steps">
         <span :style="step > 0 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps1"></span>
@@ -86,16 +74,10 @@
       <img class="logo" src="../assets/logo.svg" alt="">
     </div>
     <div class="container_mobile_photo">
-      <img v-show="step == 1" class="mobile_photo" src="../assets/screen_1.png" alt="">
-      <img v-show="step == 2" class="mobile_photo" src="../assets/screen_2.png" alt="">
-      <img v-show="step == 3" class="mobile_photo" src="../assets/screen_3.png" alt="">
+      <img class="mobile_photo" src="../assets/screen_3.png" alt="">
     </div>
     <div class="container_title">
-      <h1>
-        {{step == 1 ? "Сканируй QR-Code" : ""}}
-        {{step == 2 ? "Просматривай меню" : ""}}
-        {{step == 3  ? "Смотри в 3D" : ""}}
-      </h1>
+      <h1>Смотри в 3D</h1>
 
       <div class="steps">
         <span :style="step > 0 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps1"></span>
