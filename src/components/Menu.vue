@@ -43,7 +43,7 @@
             dataMenu: {}
         },
         mounted() {
-            fetch(`https://nikita.tech/api/ewyz/get_menu?${this.dataMenu}`)
+            fetch(`https://nikita.tech/api/ewyz/get_menu?id=${this.dataMenu}`)
                 .then(response => response.text())
                 .then((response) => {
                     this.data = JSON.parse(response)
