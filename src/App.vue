@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <FirsScreen
+    <!-- <FirsScreen
+        v-if="screen == 0"
+        @toMainScreen='toMainScreen' /> -->
+    <FirsScreens
         v-if="screen == 0"
         @toMainScreen='toMainScreen' />
 
@@ -26,7 +29,8 @@
 </template>
 
 <script>
-import FirsScreen from './components/FirsScreen.vue'
+// import FirsScreen from './components/FirsScreen.vue'
+import FirsScreens from './components/FirsScreens.vue'
 import MainScreen from './components/MainScreen.vue'
 import MenuScreen from './components/Menu'
 import ProductScreen from './components/Product'
@@ -35,7 +39,8 @@ import ProductScreen3D from './components/Product3D'
 export default {
   name: 'App',
   components: {
-    FirsScreen,
+    // FirsScreen,
+    FirsScreens,
     MainScreen,
     MenuScreen,
     ProductScreen,
@@ -94,5 +99,9 @@ body {
   height: 100%;
   width: 100%;
   background: #212121;
+  overflow-x: hidden;
+}
+html {
+  overflow-x: hidden;
 }
 </style>
