@@ -147,6 +147,8 @@
 
             background: #fff;
 
+            overflow-x: auto;
+
 
             .search_form {
                 width: 100%;
