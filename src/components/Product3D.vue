@@ -4,8 +4,6 @@
             <p @click='back' class="logo_text">Назад</p>
         </div>
         <div class="MenuContent">
-            
-            <!-- <iframe src="/" width="100%" frameborder="0"></iframe> -->
             <iframe 
                 width="100%"
                 
@@ -18,15 +16,15 @@
 
             <div class="description" >
                 <div class="titel_product">
-                    <p class="name">Латте</p>
-                    <p class="price">500</p>
+                    <p class="name">{{productData[1]['name']}}</p>
+                    <p class="price">{{productData[1]['price']}}</p>
                 </div>
                 <div class="time_block">
-                    <p class="time">5-10min</p>
+                    <p class="time">{{productData[1]['time']}} min</p>
                 </div>
                 <div class="structure">
                     <p>Состав:</p>
-                    <p class="structure_text" >Блабла бабалабла блабалбала блабалабл аба лбалаблаб ла</p>
+                    <p class="structure_text" >{{productData[1]['structure']}}</p>
                 </div>
                 <div class="container_btn" >
                     <button @click='back' >Назад</button>
@@ -44,6 +42,9 @@
                 data: [],
                 step: 2
             }
+        },
+        props: {
+            productData: {}
         },
         methods: {
             back() {

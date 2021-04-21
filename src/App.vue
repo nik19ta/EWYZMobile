@@ -24,6 +24,7 @@
 
     <ProductScreen3D
         v-if="screen == 4"
+        :productData='productData'
         @back='back' />
   </div>
 </template>
