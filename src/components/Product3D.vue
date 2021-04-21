@@ -1,20 +1,21 @@
 <template>
     <div class="ProductScrin">
-        <!-- <div class="container_logo">
+        <div class="container_logo">
             <p @click='back' class="logo_text">Назад</p>
-        </div> -->
+        </div>
+        <div class="MenuContent">
+            
+            <!-- <iframe src="/" width="100%" frameborder="0"></iframe> -->
+            <iframe 
+                width="100%"
+                
+                sandbox="allow-forms allow-scripts allow-same-origin allow-modals allow-popups allow-presentation" 
+                allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" 
+                src="https://vertuart.ru/model" 
+                title="Go to url" 
+                id="sandbox-preview" 
+                class="sc-gGBfsJ hTuYJr" ></iframe>
 
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
-        <a-entity
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"></a-entity>
-        </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-
-        <!-- <div class="MenuContent">
             <div class="description" >
                 <div class="titel_product">
                     <p class="name">Латте</p>
@@ -31,7 +32,7 @@
                     <button @click='back' >Назад</button>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 
@@ -53,6 +54,10 @@
 </script>
 
 <style scoped lang="scss">
+    .hTuYJr {
+        height: calc(100vh - 50px - 230px + 10px);
+        border: none;
+    }
     .ProductScrin {
         width: 100vw;
         height: 100vh;
