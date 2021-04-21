@@ -168,23 +168,21 @@
             }
 
             .products {
-                margin-top: 30px;
-
                 display: flex;
                 flex-direction: column;
 
-                background: #FFFFFF;
 
-                /* shadow */
-                box-shadow: 0px 10px 44px -12px rgba(0, 0, 0, 0.25);
-                border-radius: 10px;
 
-                padding: 10px;
 
                 .product {
+                    box-shadow: 0px 10px 44px -12px rgba(0, 0, 0, 0.25);
+                    border-radius: 10px;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    margin-top: 20px;
+                    background: #FFFFFF;
+                    padding: 10px;
 
                     .text {
                         height: 100px;
