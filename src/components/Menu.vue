@@ -2,9 +2,10 @@
     <div class="MenuScrin">
         <div class="container_logo">
             <p class="logo_text">Menu</p>
-            <img class="search" src="../assets/search.svg" alt="">
+            <img v-if="mode == 'menu'" @click="toSearchMenu" class="search" src="../assets/search.svg" alt="">
+            <img v-else @click="toSearchMenu" class="search" src="../assets/back.png" alt="">
         </div>
-        <div class="MenuContent">
+        <div v-if="mode == 'menu'" class="MenuContent">
 
             <div class="category" v-for="item in data" :key="item.name">
                 <p class="title">{{item.name}}</p>
@@ -28,6 +29,28 @@
                 </div>
             </div>
         </div>
+        <div v-else class="MenuContent" >
+            <form v-on:submit.prevent v-on:submit="getProduct" class="search_form" >
+                <input class="search_inp" v-model="searchName" type="text" placeholder="name" >
+
+            </form>
+
+
+                
+            <div class="products" v-if="searchdata != []" >
+                <div class="product" v-for="item in searchdata.data" :key="item.id" >
+                    <div class="text" >
+                        <div>
+                            <p class="name" >{{item['name']}}</p>
+                            <p class="time" >{{item['time']}}мин</p>
+                        </div>
+                        <p class="price" >{{item['price']}}₽</p>
+                    </div>
+                    <div class="img" :style="`background-image: url(${item['img']});`" >
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -37,6 +60,9 @@
         data() {
             return {
                 data: [],
+                searchdata: [],
+                mode: 'menu',
+                searchName: ""
             }
         },
         props: {
@@ -57,6 +83,26 @@
             },
             toProduct(data) {
                 this.$emit('toProduct', data)
+            },
+            toSearchMenu() {
+                if (this.mode == "menu") {
+                    this.mode = "search"
+                } else {
+                    this.mode = "menu"
+                }
+            },
+            getProduct() {
+                const vm = this;
+                fetch(`https://nikita.tech/api/ewyz/search?name=${this.searchName}&id=${this.dataMenu}`)
+                .then(response => response.text())
+                .then((response) => {
+                    
+                    if (JSON.parse(response).data.length > 0) {    
+                        vm.searchdata = JSON.parse(response);
+                    } else {
+                        vm.searchdata = []
+                    }
+                })
             }
         }
     }
@@ -100,6 +146,76 @@
             height: calc(100vh - 50px);
 
             background: #fff;
+
+
+            .search_form {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                padding-top: 20px;
+
+                .search_inp {
+                    width: 100%;
+                    background: #212121;
+                    color: #fff;
+                    padding: 10px;
+                    border: 0;
+                    border-radius: 11px;
+                    font-size: 16px;
+                }
+            }
+
+            .products {
+                margin-top: 30px;
+
+                display: flex;
+                flex-direction: column;
+
+                background: #FFFFFF;
+
+                /* shadow */
+                box-shadow: 0px 10px 44px -12px rgba(0, 0, 0, 0.25);
+                border-radius: 10px;
+
+                padding: 10px;
+
+                .product {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .text {
+                        height: 100px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        .name {
+                            margin: 0;
+                            color: 212121;
+                            font-family: Montserrat;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 18px;
+                        }
+                        .time {
+                            font-size: 14px;
+                            margin-top: 0px;
+                        }
+                        .price {
+                            margin: 0;
+                            color: 212121;
+
+                        }
+                    }
+                    .img {
+                        height: 100px;
+                        width: 100px;
+                        border-radius: 10px;
+                        background-size: cover;
+                    }
+                }
+            }
 
             .category {
                 width: 100%;
