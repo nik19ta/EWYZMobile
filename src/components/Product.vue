@@ -4,16 +4,20 @@
             <p @click="backToMenu" class="logo_text">Назад</p>
         </div>
         <div class="MenuContent">
-            
-            <div class="photo" :style="`background-image: url(${productData[1].img})`" >
-                <!-- {{productData}} -->
-            </div>
 
-            <div class="description" >
+
+            <swipe class="my-swipe">
+                <swipe-item v-for="img in productData[1]['img_arr']" :key="img">
+                    <div class="photo" :style="`background-image: url(${img})`">
+                    </div>
+                </swipe-item>
+            </swipe>
+
+            <div class="description">
                 <div class="steps">
-                    <span :style="step > 0 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps1"></span>
-                    <span :style="step > 1 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps2"></span>
-                    <span :style="step > 2 ? 'opacity: 1' : 'opacity: 0.5' " class="step steps3"></span>
+                    <span :style="step > 0 ? 'opacity: 0' : 'opacity: 0' " class="step steps1"></span>
+                    <span :style="step > 1 ? 'opacity: 0' : 'opacity: 0' " class="step steps2"></span>
+                    <span :style="step > 2 ? 'opacity: 0' : 'opacity: 0' " class="step steps3"></span>
                 </div>
                 <div class="titel_product">
                     <p class="name">{{productData[1].name}}</p>
@@ -24,10 +28,10 @@
                 </div>
                 <div class="structure">
                     <p>Состав:</p>
-                    <p class="structure_text" > {{productData[1].structure}} </p>
+                    <p class="structure_text"> {{productData[1].structure}} </p>
                 </div>
-                <div class="container_btn" >
-                    <button @click="to3D" >Смотреть в 3D</button>
+                <div class="container_btn">
+                    <button @click="to3D">Смотреть в 3D</button>
                 </div>
             </div>
         </div>
@@ -35,6 +39,16 @@
 </template>
 
 <script>
+    // import { SwipeList, SwipeOut } from 'vue-swipe-actions';
+    require('vue-swipe/dist/vue-swipe.css');
+
+    import {
+        Swipe,
+        SwipeItem
+    } from 'vue-swipe';
+    const vueSwipe = Swipe;
+    const vueSwipeItem = SwipeItem;
+
     export default {
         name: 'ProductScreen',
         data() {
@@ -42,6 +56,10 @@
                 data: [],
                 step: 0
             }
+        },
+        components: {
+            'swipe': vueSwipe,
+            'swipe-item': vueSwipeItem
         },
         props: {
             productData: {}
@@ -52,6 +70,12 @@
             },
             to3D() {
                 this.$emit('to3D')
+            },
+            swipeLift() {
+
+            },
+            swipeRight() {
+
             }
         }
     }
@@ -108,14 +132,14 @@
             background: #f0f0f0;
 
             position: relative;
-            
+
             .photo {
                 width: 100%;
                 height: calc(100vh - 50px - 230px + 20px);
                 background-size: cover;
             }
 
-            .steps{
+            .steps {
                 width: 100%;
                 height: 20px;
 
@@ -126,16 +150,16 @@
                 // margin-top: -60px;
                 z-index: 2;
 
-                .step{
-                width: 8px;
-                height: 8px;
+                .step {
+                    width: 8px;
+                    height: 8px;
 
-                display: block;
-                border-radius: 10px;
-                background: #fff;
-                opacity: 0.5;
-                margin-left: 14px;
-                margin-right: 14px;
+                    display: block;
+                    border-radius: 10px;
+                    background: #fff;
+                    opacity: 0.5;
+                    margin-left: 14px;
+                    margin-right: 14px;
                 }
             }
 
@@ -206,7 +230,7 @@
             }
         }
 
-        .structure{
+        .structure {
             padding-left: 10px;
             padding-right: 10px;
 
