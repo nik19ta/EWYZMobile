@@ -32,14 +32,13 @@
         <div v-else class="MenuContent" >
             <form v-on:submit.prevent v-on:submit="getProduct" class="search_form" >
                 <input class="search_inp" v-model="searchName" type="text" placeholder="name" >
-
             </form>
 
 
                 
             <div class="products" v-if="searchdata != []" >
-                <div class="product" v-for="item in searchdata.data" :key="item.id" >
-                    <div class="text" >
+                <div class="product" v-for="item in searchdata.data" :key="item.id" @click='toProduct(["", item])'>
+                    <div class="text">
                         <div>
                             <p class="name" >{{item['name']}}</p>
                             <p class="time" >{{item['time']}}мин</p>
@@ -82,6 +81,7 @@
                 console.log(1);
             },
             toProduct(data) {
+                console.log(data);
                 this.$emit('toProduct', data)
             },
             toSearchMenu() {
@@ -269,6 +269,10 @@
 
                                 .name {
                                     color: #fff;
+                                    white-space: nowrap;
+                                    max-width: 90%;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
                                 }
 
                                 .price {
